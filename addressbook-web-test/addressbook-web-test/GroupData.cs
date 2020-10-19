@@ -48,7 +48,7 @@ namespace WebAddressbookTest
             }
             set
             {
-                name = header;
+                header = value;
             }
         }
     }
