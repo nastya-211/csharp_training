@@ -27,7 +27,7 @@ namespace WebAddressbookTest
 
         public bool IsElementPresents(string by)
         {
-            app.IsElementPresent();
+            app.IsElementPresent(by);
         }
 
         public bool IsAlertPresents()

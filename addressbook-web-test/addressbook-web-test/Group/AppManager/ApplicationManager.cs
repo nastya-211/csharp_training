@@ -19,6 +19,12 @@ namespace WebAddressbookTest
         public LoginHelper loginHelper;
         public NavigationHelper navigationHelper;
         public GroupHelper groupHelper;
+
+        internal void IsElementPresent(string by)
+        {
+            throw new NotImplementedException();
+        }
+
         public ContactHelper contactHelper;
 
         public ApplicationManager()
