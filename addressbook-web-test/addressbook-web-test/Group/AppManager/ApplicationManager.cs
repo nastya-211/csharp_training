@@ -29,16 +29,22 @@ namespace WebAddressbookTest
 
         public ApplicationManager()
         {
-            loginHelper = new LoginHelper(driver);
-            navigationHelper = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
+            loginHelper = new LoginHelper(this);
+            navigationHelper = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
 
             driver = new FirefoxDriver();
             baseURL = "http://localhost:8080/addressbook/";
             verificationErrors = new StringBuilder();
         }
-
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
+        }
         public void Stop()
         {
             try

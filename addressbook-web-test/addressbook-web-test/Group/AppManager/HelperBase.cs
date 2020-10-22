@@ -12,9 +12,12 @@ namespace WebAddressbookTest
     public class HelperBase
     {
         protected IWebDriver driver;
-        public HelperBase(IWebDriver driver)
+        protected ApplicationManager manager;
+
+        public HelperBase(ApplicationManager manager)
         {
-            this.driver = driver;
+            driver = manager.Driver;
+            this.manager = manager;
 
         }
     }

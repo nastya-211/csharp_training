@@ -17,6 +17,8 @@ namespace WebAddressbookTest
         public void SetupTest()
         {
             app = new ApplicationManager();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]
@@ -28,6 +30,7 @@ namespace WebAddressbookTest
         public bool IsElementPresents(string by)
         {
             app.IsElementPresent(by);
+
         }
 
         public bool IsAlertPresents()
