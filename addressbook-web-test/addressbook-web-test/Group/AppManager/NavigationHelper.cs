@@ -14,7 +14,7 @@ namespace WebAddressbookTest
     {
         public string baseURL;
 
-        public NavigationHelper(IWebDriver driver) : base(driver)
+        public NavigationHelper(IWebDriver driver, string baseURL) : base(driver)
         {
             this.baseURL = baseURL;
 

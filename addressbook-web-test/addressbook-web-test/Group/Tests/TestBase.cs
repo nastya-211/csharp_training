@@ -25,30 +25,14 @@ namespace WebAddressbookTest
             app.Stop();
         }
 
-        private bool IsElementPresent(By by)
+        public bool IsElementPresents(string by)
         {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            app.IsElementPresent();
         }
 
-        private bool IsAlertPresent()
+        public bool IsAlertPresents()
         {
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException)
-            {
-                return false;
-            }
+            app.IsAlertPresent();
         }
     }
 }
