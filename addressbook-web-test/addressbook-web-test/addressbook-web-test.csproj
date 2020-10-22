@@ -65,12 +65,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AccountData.cs" />
-    <Compile Include="GroupData.cs" />
+    <Compile Include="Contact\AppManager\ContactHelper.cs" />
+    <Compile Include="Contact\Tests\ContactRemovalTest.cs" />
+    <Compile Include="Group\Model\AccountData.cs" />
+    <Compile Include="Group\AppManager\ApplicationManager.cs" />
+    <Compile Include="Group\Model\GroupData.cs" />
+    <Compile Include="Group\AppManager\GroupHelper.cs" />
+    <Compile Include="Group\Tests\GroupRemovalTest.cs" />
+    <Compile Include="Group\AppManager\HelperBase.cs" />
+    <Compile Include="Group\AppManager\LoginHelper.cs" />
+    <Compile Include="Group\AppManager\NavigationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GroupCreationTests.cs" />
-    <Compile Include="ContactCreationTest.cs" />
-    <Compile Include="ContactData.cs" />
+    <Compile Include="Group\Tests\GroupCreationTests.cs" />
+    <Compile Include="Contact\Tests\ContactCreationTest.cs" />
+    <Compile Include="Contact\Model\ContactData.cs" />
+    <Compile Include="Group\Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
