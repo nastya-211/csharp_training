@@ -18,10 +18,32 @@ namespace WebAddressbookTest
         {
         }
 
+        public ContactHelper ModifyContact(int v, ContactData newContactData)
+        {
+            SelectContact(v);
+            InitContactModification();
+            FillContactForm(newContactData);
+            SubmitContactModification();
+            ReturnToHomePage();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("(//input[@name='update'])[2]")).Click();
+            return this;
+        }
+
+        private ContactHelper InitContactModification()
+        {
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[4]")).Click();
+            return this;
+        }
+
         public ContactHelper Remover(int s)
         {
             throw new NotImplementedException();
-            SelectContact(1);
+            SelectContact(s);
             RemoveContact();
             return this;
         }

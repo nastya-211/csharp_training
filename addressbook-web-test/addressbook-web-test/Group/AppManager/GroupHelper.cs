@@ -18,12 +18,23 @@ namespace WebAddressbookTest
 
         public GroupHelper Remove(int p)
         {
-            throw new NotImplementedException();
             manager.Navigator.GoToGroupsPage();
-            SelectGroup(1);
+            SelectGroup(p);
             RemoveGroup();
             ReturnToGroupsPage();
             return this;
+        }
+
+        public GroupHelper ModifyGroup(int p, GroupData newData)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(p);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
+            return this;
+
         }
 
         public GroupHelper CreateGroup(GroupData group)
@@ -74,6 +85,19 @@ namespace WebAddressbookTest
         {
             driver.FindElement(By.Name("new")).Click();
             return this;
+        }
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+
+        }
+
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+
         }
     }
 }
