@@ -11,7 +11,7 @@ namespace WebAddressbookTest
     public class ContactModificationTests : TestBase
     {
         [Test]
-        public void ContactCreationTest()
+        public void ContactModificationTest()
         {
             ContactData newContactData = new ContactData("asd");
             newContactData.Lastname= "qwe";

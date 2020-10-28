@@ -12,6 +12,7 @@ namespace WebAddressbookTest
 {
     public class GroupHelper : HelperBase
     {
+        protected ApplicationManager app;
         public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
@@ -78,6 +79,18 @@ namespace WebAddressbookTest
             driver.FindElement(By.Name("group_header")).SendKeys(group.Footer);
             driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys(group.Header);
+            return this;
+        }
+
+        public GroupHelper IsElementPresents(string by)
+        {
+            app.IsElementPresent(by);
+            return this;
+        }
+
+        public GroupHelper IsAlertPresents()
+        {
+            app.IsAlertPresent();
             return this;
         }
 

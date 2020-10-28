@@ -26,16 +26,5 @@ namespace WebAddressbookTest
         {
             app.Stop();
         }
-
-        public bool IsElementPresents(string by)
-        {
-            app.IsElementPresent(by);
-
-        }
-
-        public bool IsAlertPresents()
-        {
-            app.IsAlertPresent();
-        }
     }
 }
