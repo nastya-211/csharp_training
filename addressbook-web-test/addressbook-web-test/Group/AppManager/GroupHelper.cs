@@ -12,7 +12,6 @@ namespace WebAddressbookTest
 {
     public class GroupHelper : HelperBase
     {
-        protected ApplicationManager app;
         public GroupHelper(ApplicationManager manager) : base(manager)
         {
         }
@@ -73,24 +72,9 @@ namespace WebAddressbookTest
 
         public GroupHelper FillGroupForm(GroupData group)
         {
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Footer);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Header);
-            return this;
-        }
-
-        public GroupHelper IsElementPresents(string by)
-        {
-            app.IsElementPresent(by);
-            return this;
-        }
-
-        public GroupHelper IsAlertPresents()
-        {
-            app.IsAlertPresent();
+            Type(By.Name("group_name"), group.Name);
+            Type(By.Name("group_header"), group.Header);
+            Type(By.Name("group_footer"), group.Footer);
             return this;
         }
 

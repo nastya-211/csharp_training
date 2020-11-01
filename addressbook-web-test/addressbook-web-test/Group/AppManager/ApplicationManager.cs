@@ -13,31 +13,29 @@ namespace WebAddressbookTest
     public class ApplicationManager
     {
         protected IWebDriver driver;
-        private StringBuilder verificationErrors;
         protected string baseURL;
+        private StringBuilder verificationErrors;
 
         public LoginHelper loginHelper;
         public NavigationHelper navigationHelper;
         public GroupHelper groupHelper;
-
-        internal void IsElementPresent(string by)
-        {
-            throw new NotImplementedException();
-        }
-
         public ContactHelper contactHelper;
 
         public ApplicationManager()
         {
+            driver = new FirefoxDriver();
+            baseURL = "http://localhost:8080/addressbook/";
+            verificationErrors = new StringBuilder();
             loginHelper = new LoginHelper(this);
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
-
-            driver = new FirefoxDriver();
-            baseURL = "http://localhost:8080/addressbook/";
-            verificationErrors = new StringBuilder();
         }
+
+        internal void IsAlertPresent()
+        {
+        }
+
         public IWebDriver Driver
         {
             get
@@ -54,31 +52,6 @@ namespace WebAddressbookTest
             catch (Exception)
             {
                 // Ignore errors if unable to close the browser
-            }
-        }
-        public bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
-        public bool IsAlertPresent()
-        {
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException)
-            {
-                return false;
             }
         }
 
@@ -105,6 +78,11 @@ namespace WebAddressbookTest
                 return groupHelper;
             }
         }
+
+        public void IsElementPresent(string by)
+        {
+        }
+
         public ContactHelper Contacts
         {
             get

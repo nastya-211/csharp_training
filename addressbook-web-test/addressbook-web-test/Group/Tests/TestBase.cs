@@ -16,7 +16,8 @@ namespace WebAddressbookTest
         [SetUp]
         public void SetupTest()
         {
-            app = new ApplicationManager();
+
+            app = TestSuiteFixture.app;
             app.Navigator.GoToHomePage();
             app.Auth.Login(new AccountData("admin", "secret"));
         }
