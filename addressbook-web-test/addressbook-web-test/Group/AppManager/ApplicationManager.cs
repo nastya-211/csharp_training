@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -14,22 +15,45 @@ namespace WebAddressbookTest
     {
         protected IWebDriver driver;
         protected string baseURL;
-        private StringBuilder verificationErrors;
 
         public LoginHelper loginHelper;
         public NavigationHelper navigationHelper;
         public GroupHelper groupHelper;
         public ContactHelper contactHelper;
+        private static ThreadLocal<ApplicationManager> app=new ThreadLocal<ApplicationManager>();
 
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new FirefoxDriver();
             baseURL = "http://localhost:8080/addressbook/";
-            verificationErrors = new StringBuilder();
+
             loginHelper = new LoginHelper(this);
             navigationHelper = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
             contactHelper = new ContactHelper(this);
+        }
+
+        ~ApplicationManager()
+        {
+                    try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
+        }
+
+        public static ApplicationManager GetInstance()
+        {
+            if (! app.IsValueCreated)
+            {
+                ApplicationManager newInstance = new ApplicationManager();
+                newInstance.Navigator.GoToHomePage();
+                app.Value = newInstance;
+            }
+            return app.Value;
         }
 
         internal void IsAlertPresent()
@@ -41,17 +65,6 @@ namespace WebAddressbookTest
             get
             {
                 return driver;
-            }
-        }
-        public void Stop()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-                // Ignore errors if unable to close the browser
             }
         }
 
