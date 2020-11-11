@@ -18,7 +18,7 @@ namespace WebAddressbookTest
             newContactData.Nickname = "zxc";
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 
-            app.Contacts.ModifyContact(1, newContactData);
+            app.Contacts.ModifyContact(newContactData);
 
             List<ContactData> newContacts = app.Contacts.GetContactList();
             oldContacts[0].Firstname = newContactData.Firstname;
